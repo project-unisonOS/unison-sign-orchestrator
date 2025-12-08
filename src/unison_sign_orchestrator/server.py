@@ -83,6 +83,7 @@ def _make_app() -> FastAPI:
     core_client = CoreOrchestratorClient(
         host=os.getenv("UNISON_ORCH_HOST", "orchestrator"),
         port=int(os.getenv("UNISON_ORCH_PORT", "8080")),
+        path=os.getenv("UNISON_ORCH_INTENT_PATH", "/intent"),
     )
 
     @app.get("/health")
