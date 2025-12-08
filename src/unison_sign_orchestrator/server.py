@@ -86,10 +86,12 @@ def _make_app() -> FastAPI:
     )
 
     @app.get("/health")
+    @app.get("/healthz")
     def health():
         return {"status": "ok", "service": APP_NAME}
 
     @app.get("/ready")
+    @app.get("/readyz")
     def ready():
         return {"ready": True}
 

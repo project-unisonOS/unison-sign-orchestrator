@@ -6,6 +6,9 @@ from unison_sign_orchestrator.server import _make_app
 def test_handle_interpretation_endpoint():
     app = _make_app()
     client = TestClient(app)
+    # readiness/health parity with other services
+    assert client.get("/healthz").status_code == 200
+    assert client.get("/readyz").status_code == 200
     payload = {
         "language": "asl",
         "segment_id": "seg-1",
